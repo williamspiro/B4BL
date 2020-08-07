@@ -1,0 +1,47 @@
+{% macro banner() -%}
+  {% if module.style.banner_image_select == 'featured_image' and content.featured_image %}
+    background-image: url('{{ content.featured_image }}');
+  {% elif module.style.banner_image_select == 'custom_bg_image' and module.style.bg_image.src %}
+    background-image: url('{{ module.style.bg_image.src }}');
+  {% elif module.style.banner_image_select == 'custom_bg_color' %}
+    background: rgba({{ module.style.bg_color.color|convert_rgb }},{{ module.style.bg_color.opacity / 100 }});
+  {% else %}
+    background-color: #D0D0D0;
+  {% endif %}
+{%- endmacro %}
+
+<div class="blog-post-header" style="{{ banner()|trim }}">
+  <div class="blog-post-header__inner">
+    <h1 class="blog-post-header__title">{{ content.name }}</h1>
+    <div class="blog-post-header__meta">
+      <div class="blog-post-header__author-info">
+        {% if content.blog_author.avatar %}
+          <span class="blog-post-header__author-avatar">
+            <img src="{{ content.blog_author.avatar }}" alt="Picture of {{ content.blog_author.display_name }}">
+          </span>
+        {% endif %}
+        <a class="blog-post-header__author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+          <div>{{ content.blog_post_author.display_name }}</div>
+        </a>
+      </div>
+      <div class="blog-post-header__additional-info">
+        <div class="blog-post-header__topics">
+          {% for topic in content.topic_list %}
+            <a class="topic-link" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </div>
+        <div class="blog-post-header__timestamp">
+          {{ content.publish_date_localized }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  #hs_cos_wrapper_{{ name }} .blog-post-header {
+    padding: {{ module.style.padding.vertical ~ 'px' }} 0;
+  }
+</style>
+{% end_require_css %}

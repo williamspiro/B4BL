@@ -1,0 +1,58 @@
+.blog-post-header {
+  background-position: center center;
+  background-size: cover;
+  border-bottom: none;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.blog-post-header,
+.blog-post-header h1,
+.blog-post-header a {
+  color: #FFF;
+}
+
+.blog-post-header__meta {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.blog-post-header__author-info,
+.blog-post-header__additional-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.blog-post-header__author-info {
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-header__author-avatar {
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 45px;
+  line-height: 1;
+  overflow: hidden;
+  margin-right: 1.4rem;
+  position: relative;
+  width: 45px;
+}
+
+.blog-post-header__author-avatar img {
+  height: 100%;
+  width: auto;
+}
+
+.blog-post-header__topics {
+  padding-right: 1.5rem;
+}

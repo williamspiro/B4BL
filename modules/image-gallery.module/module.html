@@ -1,0 +1,28 @@
+{% set unique = 'image-gallery--{{ name }}' %}
+
+<div class="image-gallery" id="{{ unique }}">
+  <div class="image-gallery__sidebar">
+    {% for img in module.image_field %}
+      {% if img.src %}
+        <input class="image-gallery__selector" id="{{ unique }}__input--{{ loop.index }}" type="radio" name="image-gallery__selector" value="{{ unique }}__lib--{{ loop.index }}"{% if loop.first %} checked{% endif %}>
+        <label for="{{ unique }}__input--{{ loop.index }}" class="image-gallery__thumbnail">
+          <img class="image-gallery__thumbnail-img image-gallery__lib--{{ loop.index }}" src="{{ img.src }}" alt="{{ img.alt }}" data-object-fit>
+        </label>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="image-gallery__viewport">
+    {% for img in module.image_field %}
+      {% if img.src %}
+        {% set sizeAttrs = 'width="{{ img.width }}" height="{{ img.height }}"' %}
+        {% if img.size_type == 'auto' %}
+          {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif img.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ img.max_width }}px; max-height: {{ img.max_height }}px"' %}
+        {% endif %}
+        <img class="image-gallery__featured {% if loop.first %}image-gallery__featured--selected{% endif %}" id="{{ unique }}__lib--{{ loop.index }}" src="{{ img.src }}" alt="{{ img.alt }}" {{ sizeAttrs }} data-object-fit>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

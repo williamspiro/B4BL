@@ -1,0 +1,57 @@
+<div class="upcoming-events__container">
+  <div class="upcoming-events__header">
+    {% icon
+      extra_classes='upcoming-events__header-icon',
+      name='{{ module.heading.main_icon.name }}',
+      purpose='decorative',
+      style='{{ module.heading.main_icon.type }}',
+      unicode='{{ module.heading.main_icon.unicode }}'
+    %}
+    <h3>{{ module.heading.main_title }}</h3>
+    {% if module.heading.main_link.url.type is equalto 'EMAIL_ADDRESS' %}
+      {% set main_link_href = 'mailto:' ~ module.heading.main_link.url.href %}
+    {% else %}
+      {% unless (module.heading.main_link.url.href is string_containing '//') or !module.heading.main_link.url.href %}
+        {% set main_link_href = '//' ~ module.heading.main_link.url.href %}
+      {% else %}
+        {% set main_link_href = module.heading.main_link.url.href || '' %}
+      {% endunless %}
+    {% endif %}
+    {% set rel = (module.heading.main_link.open_in_new_tab ? 'noopener ' : null) ~ (module.heading.main_link.no_follow ? 'nofollow' : null) %}
+    <a href="{{ main_link_href }}" rel="{{ rel }}" {% if module.heading.main_link.open_in_new_tab %}target="_blank"{% endif %}>
+      {{ module.heading.main_link_text }}
+    </a>
+  </div>
+  <div class="upcoming-events__body">
+    {% for event in module.event %}
+      <div class="upcoming-events__event-details">
+        <div class="upcoming-events__event-details-left">
+          <div class="upcoming-events__event-date">{{ event.date|datetimeformat('%d<br><span class="event_details__date--small">%b</span>') }}</div>
+        </div>
+        <div class="upcoming-events__event-details-right">
+          <div class="upcoming-events__event-subtitle">
+              {% icon
+                extra_classes='upcoming-events__event-icon',
+                name='{{ event.event_icon.name }}',
+                purpose='decorative',
+                style='{{ event.event_icon.type }}'
+                unicode='{{ event.event_icon.unicode }}'
+              %}
+            <h6>{{ event.date|datetimeformat('%d %B') }} | {{ event.address }}</h6>
+          </div>
+          <h4 class="upcoming-events__event-title">{{ event.title }}</h4>
+            {% set href = event.link.url.href %}
+            {% if event.link.url.type is equalto 'EMAIL_ADDRESS' %}
+              {% set href = 'mailto:' + href %}
+            {% endif %}
+            <a class="icon-card__link" href="{{ href }}"
+              {% if event.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if event.link.no_follow %}rel="nofollow"{% endif %}
+              >
+              {{ event.link_text }}
+            </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

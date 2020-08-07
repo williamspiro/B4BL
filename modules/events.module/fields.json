@@ -1,0 +1,138 @@
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.main_title",
+    "name" : "main_title",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Upcoming Events"
+  }, {
+    "id" : "heading.main_icon",
+    "name" : "main_icon",
+    "label" : "Heading icon",
+    "required" : false,
+    "locked" : false,
+    "type" : "icon",
+    "default" : {
+      "name" : "gripfire"
+    }
+  }, {
+    "id" : "heading.main_link_text",
+    "name" : "main_link_text",
+    "label" : "Heading link text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "View all"
+  }, {
+    "id" : "heading.main_link",
+    "name" : "main_link",
+    "label" : "Heading link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "href" : "https://www.hubspot.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : null
+}, {
+  "id" : "event",
+  "name" : "event",
+  "label" : "Events",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 25,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "event.date",
+    "name" : "date",
+    "label" : "Date and time",
+    "required" : false,
+    "locked" : false,
+    "type" : "date",
+    "default" : 1575964800000
+  }, {
+    "id" : "event.event_icon",
+    "name" : "event_icon",
+    "label" : "Event icon",
+    "required" : false,
+    "locked" : false,
+    "type" : "icon",
+    "default" : {
+      "name" : "calendar"
+    }
+  }, {
+    "id" : "event.title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "SEMI-ANNUAL EDUCATION GALA"
+  }, {
+    "id" : "event.address",
+    "name" : "address",
+    "label" : "Address",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "2 Canal Park, Cambridge, MA"
+  }, {
+    "id" : "event.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "href" : "https://www.hubspot.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  }, {
+    "id" : "event.link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Learn more"
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : null
+} ]

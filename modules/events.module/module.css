@@ -1,0 +1,124 @@
+.upcoming-events__container {
+  background-color: #FFF;
+  border: 1px solid #CCC;
+}
+
+.upcoming-events__header {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid #CCC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
+}
+
+.upcoming-events__header h3 {
+  margin: 0;
+}
+
+.upcoming-events__header-icon > svg {
+  fill: #00CB66;
+  margin-right: 0.5rem;
+  width: 2rem;
+}
+
+.upcoming-events__header a {
+  margin-left: auto;
+}
+
+.upcoming-events__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.upcoming-events__event-details {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.upcoming-events__event-details-left {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 25%;
+}
+
+.upcoming-events__event-date {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+
+.upcoming-events__event-date {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.upcoming-events__event-details-right {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 75%;
+}
+
+.upcoming-events__event-subtitle {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+}
+
+.upcoming-events__event-icon > svg {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.upcoming-events__event-subtitle h6,
+.upcoming-events__event-title {
+  margin: 0.5rem 0;
+}
+
+.upcoming-events__event-title {
+  width: 100%;
+}

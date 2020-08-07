@@ -1,0 +1,29 @@
+{% set donation_table_data = hubdb_table_rows(2656008, "orderBy=-hs_created_at") %}
+{% set raised = 0 %}
+{#{% for donation in donation_table_data %}{% set raised =  raised + donation.amount  %}{% if loop.last %}{{ raised }}{% endif %}{% endfor %}#}
+
+
+<div class="tile col-sm-12 col-md-6 col-lg-4">
+   {#<div class="tile_image" style="background: white url() no-repeat;">
+     <img src="{{ module.image_field.src }}" style="max-width: 100%; height: auto;">
+  </div>#}
+  <div class="tile_details">
+<!--     <h2>{{ module.event_title }}</h2>
+    <p>{{ module.event_description }}</p> -->
+    <span class="progress_amounts"><strong>${% for donation in donation_table_data %}{% set raised =  raised + donation.amount  %}{% if loop.last %}<span class="raised-total odometer">{{ raised }}</span>{% endif %}{% endfor %}</strong> of $<span class="goal">{{ module.goal }}</span> goal</span>
+    {% for donation in donation_table_data %}{% set raised =  raised + donation.amount  %}{% if loop.last %}
+    {% set percentage = raised|int / module.goal|int * 100 %}
+    <span class="progress_amounts--percent">{{ percentage|int|round(0, 'floor') }}%</span>
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" style="width: {{ percentage|int|round(0, 'floor') }}%" aria-valuenow="{{ percentage|int|round(0, 'floor') }}" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}{% endfor %}
+    
+<!--     <p class="achievement_status">Ride date: July 25, 2020</p> -->
+  </div>
+    <div class="recent-donations"><h3 class="recent-d" style="margin-bottom:0px; margin-top: 20px;">Recent donations: </h3>
+      {% for donation in donation_table_data %}
+        <li class="mydata" style="list-style: none;">Name: <strong>{{ donation.name }}</strong>, amount: <strong>${{ donation.amount }}</strong></li>
+      {% endfor %}
+    </div>  
+</div>
+</div>

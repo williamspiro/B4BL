@@ -1,0 +1,81 @@
+[ {
+  "id" : "image_field",
+  "name" : "image_field",
+  "label" : "Image",
+  "required" : true,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 25,
+    "sorting_label_field" : null,
+    "default" : 8
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "type" : "image",
+  "default" : [ {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  }, {
+    "alt" : "Dorm building on campus",
+    "height" : 585,
+    "max_height" : 585,
+    "max_width" : 1440,
+    "size_type" : "exact",
+    "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/sample-gallery-image.png",
+    "width" : 1440
+  } ]
+} ]

@@ -1,0 +1,30 @@
+[ {
+  "id" : "960e0135-68a0-4efc-b940-92ce9a587732",
+  "name" : "goal",
+  "label" : "Goal",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "4000"
+}, {
+  "id" : "6f5103c6-2bf6-cb74-648d-bc5ed49f83da",
+  "name" : "image_field",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://f.hubspotusercontent20.net/hubfs/7901972/B4BL/The%20Ride/The%20Ride.png",
+    "alt" : "The Ride",
+    "width" : 1469,
+    "height" : 785,
+    "max_width" : 1469,
+    "max_height" : 785
+  }
+} ]

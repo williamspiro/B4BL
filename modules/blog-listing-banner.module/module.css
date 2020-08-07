@@ -1,0 +1,14 @@
+.blog-index-header {
+  background-color: #D0D0D0;
+  background-position: center center;
+  background-size: cover;
+}
+
+.blog-index-header {
+  text-align: center;
+}
+
+.blog-index-header__title,
+.blog-index-header__subtitle {
+  color: #FFF;
+}

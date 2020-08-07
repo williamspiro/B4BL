@@ -1,0 +1,326 @@
+/* Navigation Wrapper */
+
+.navigation-primary {
+  display: inline-block;
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .navigation-primary {
+    display: block;
+    float: none;
+  }
+}
+
+/* Menu Item Styles */
+
+.navigation-primary a {
+  color: #1D1D1D;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .navigation-primary .menu-item {
+    border-top: 1px solid #FFF;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .navigation-primary a {
+    color: #FFF;
+  }
+}
+
+/* Active Menu Item Styles */
+
+.navigation-primary .submenu.level-1 > li > a.active-item {
+  position: relative;
+}
+
+.navigation-primary .submenu.level-1 > li > a.active-item:after {
+  background-color: #1D1D1D;
+  bottom: -3px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .navigation-primary .submenu.level-1 > li > a.active-item:after {
+    content: none;
+  }
+}
+
+/* Top Level Menu Items */
+
+.submenu.level-1 {
+  display: inline-block;
+}
+
+.submenu.level-1 > li {
+  display: inline-block;
+  margin: 0;
+  padding: 0 1.5rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .submenu.level-1 > li {
+    display: block;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .submenu.level-1 > li {
+    padding: 0 1rem;
+  }
+}
+
+/* Menu Items With Children */
+
+.navigation-primary .level-1 > .has-submenu:after {
+  border-color: #1D1D1D transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0px 5px;
+  content: '';
+  display: inline-block;
+  height: 0px;
+  vertical-align: middle;
+  width: 0px;
+}
+
+.navigation-primary .level-1 > .has-submenu.active-item:after {
+  border-color: #FFF transparent transparent transparent;
+}
+
+.navigation-primary .level-1 > .has-submenu:hover:after,
+.navigation-primary .level-1 > .has-submenu:focus:after,
+.navigation-primary .level-1 > .has-submenu.focus:after,
+.navigation-primary .level-1 > .has-submenu.active-item:hover:after {
+  border-color: transparent transparent #FFF transparent;
+  border-width: 0px 5px 5px 5px;
+}
+
+@media (max-width: 767px) {
+  .navigation-primary .level-1 > .has-submenu:after {
+    content: none;
+  }
+}
+
+/* Submenus */
+
+.submenu {
+  float: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .submenu {
+    display: none;
+  }
+
+  .navigation-primary .has-submenu {
+    position: relative;
+  }
+
+  .navigation-primary .submenu > .has-submenu > a {
+    width: 70%;
+  }
+
+  input[type="checkbox"]:checked ~ .submenu {
+    display: block;
+  }
+}
+
+.navigation-primary .submenu li {
+  margin: 0;
+  position: relative;
+}
+
+.navigation-primary .submenu:not(.level-1) a,
+.navigation-primary .submenu:not(.level-1) p {
+  display: block;
+  padding: 0.75rem;
+  text-decoration: none;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .navigation-primary .submenu a,
+  .navigation-primary .submenu p {
+    display: block;
+    padding: 0.75rem;
+    text-decoration: none;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+}
+
+.navigation-primary .submenu a:hover {
+  cursor: pointer;
+}
+
+.submenu.level-2,
+.submenu.level-3 {
+  border: none;
+  left: -9999px;
+  min-width: 200px;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .submenu.level-2,
+  .submenu.level-3 {
+    border: none;
+    opacity: 1;
+    position: static;
+    visibility: visible;
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+    width: 100%;
+  }
+}
+
+.submenu.level-3 {
+  top: 0;
+}
+
+
+/* Submenu Level One Visibility */
+
+.submenu.level-1 > li:hover .submenu.level-2,
+.submenu.level-1 > li.focus .submenu.level-2 {
+  left: 0;
+  opacity: 1;
+}
+
+.submenu.level-1 > li:hover:last-child .submenu.level-2,
+.submenu.level-1 > li.focus:last-child .submenu.level-2 {
+  left: auto;
+  right: 0;
+}
+
+/* Submenu Level Two Visibility */
+
+.submenu.level-2 > li:hover .submenu.level-3,
+.submenu.level-2 > li.focus .submenu.level-3 {
+  left: 100%;
+  opacity: 1;
+}
+
+.submenu.level-1 > li:last-child .submenu.level-2 .menu-item:hover .submenu.level-3,
+.submenu.level-1 > li:last-child .submenu.level-2 .menu-item.focus .submenu.level-3 {
+  left: auto;
+  right: 100%;
+}
+
+/* Mobile Navigation Toggle */
+
+#nav-toggle,
+.submenu-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .header__navigation {
+    background-color: #00CB66;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
+
+  .header__navigation-toggle {
+    cursor: pointer;
+    display: block;
+  }
+
+  .menu-arrow-icon,
+  .menu-arrow-icon:after {
+    background-color: #FFF;
+    border-radius: 10px;
+    display: block;
+    height: 4px;
+    width: 20px;
+  }
+
+  .menu-arrow-icon {
+    position: relative;
+    margin: 0 auto;
+    top: 8px;
+  }
+
+  .menu-arrow-icon:after {
+    content: '';
+    position: absolute;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  input[type="checkbox"]:checked ~ .menu-arrow .menu-arrow-bg {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -o-transition: transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
+  }
+
+  .submenu.level-1 > .has-submenu > .menu-arrow,
+  .submenu > .has-submenu > .menu-arrow,
+  .submenu .menu-arrow {
+    border: none;
+    cursor: pointer;
+    padding: 13px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+  }
+
+  .submenu.level-1 > .has-submenu > .menu-arrow-bg,
+  .submenu > .has-submenu > .menu-arrow-bg,
+  .submenu .menu-arrow-bg {
+    display: block;
+    height: 20px;
+    margin-left: auto;
+    margin-right: 30px;
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -o-transition: transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
+    width: 20px;
+  }
+}
+
+/* HubSpot Editor Styles */
+
+.hs-inline-edit .submenu.level-1 > li.has-submenu:hover .submenu.level-2,
+.hs-inline-edit > li.has-submenu.focus .submenu.level-2 {
+  visibility: hidden;
+}

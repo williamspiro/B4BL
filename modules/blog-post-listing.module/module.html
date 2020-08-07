@@ -1,0 +1,45 @@
+{% set blog_selector = blog_by_id(module.select_blog) %}
+
+{% if module.filter == 'id_only' %}
+  {% set blogPosts = blog_recent_posts(module.blog_id, 1) %}
+{% else %}
+  {% set blogPosts = blog_recent_tag_posts(module.blog_id, module.tag, 1) %}
+{% endif %}
+
+<div class="news-listing">
+  <div class="news-listing__header">
+    {% icon
+      extra_classes='news-listing__header-icon',
+      name='newspaper',
+      purpose='decorative',
+      style='SOLID',
+    %}
+    <h3>{{ module.title_text }}</h3>
+    <a href="{{ blog_selector.absolute_url }}">{{ module.button_text }}</a>
+  </div>
+  <div class="news-listing__body">
+    {% for post in blogPosts %}
+      <div class="news-listing__entry">
+        <div class="news-listing__entry-row">
+          {% icon
+            name='calendar',
+            purpose='decorative',
+            extra_classes='news-listing__entry-icon'
+          %}
+          <h6 class="news-listing__entry-date">
+            {{ post.publish_date_localized }}
+          </h6>
+        </div>
+        <h4>{{ post.title }}</h4>
+        <div class="news-listing__entry-row news-listing__entry-row--author">
+          {{ post.author_name }}&nbsp;&nbsp;|&nbsp;&nbsp;Author
+        </div>
+        <div class="news-listing__entry-summary">
+          {{ post.post_list_content|safe|truncatehtml(300, '...', false) }}
+        </div>
+        <a href="{{ post.absolute_url }}">{{ module.read_more }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>

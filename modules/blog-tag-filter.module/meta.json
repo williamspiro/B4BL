@@ -1,0 +1,9 @@
+{
+  "global" : true,
+  "smart_type" : "NOT_SMART",
+  "icon" : "../../images/module-icons/filter.svg",
+  "host_template_types" : [ "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 30602085935,
+  "label" : "Blog tag filter",
+  "is_available_for_new_content" : true
+}

@@ -1,0 +1,40 @@
+{% macro related_post(post, count, total) %}
+  {% if count == 1 %}
+  <section class="blog-related-posts">
+    <h2 class="blog-related-posts__title">Related Posts</h2>
+    <div class="blog-related-posts__list">
+  {% endif %}
+      <article class="blog-related-posts__post">
+        <div class="blog-related-posts__post-header">
+          {% if post.featured_image %}
+            <a href="{{ post.absolute_url }}">
+              <div class="blog-related-posts__image" style="background-image: url('{{ post.featured_image }}')";>
+              </div>
+            </a>
+          {% endif %}
+        </div>
+        <div class="blog-related-posts__info">
+          <div class="blog-related-posts__topic">
+            {% for topic in post.topic_list %}
+              <a class="blog-related-posts__topic-link" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
+            {% endfor %}
+          </div>
+          <div class="blog-related-posts__date">
+            {{ post.publish_date_localized }}
+          </div>
+        </div>
+        <div class="blog-related-posts__post-content">
+          <a href="{{ post.absolute_url }}">
+            <h3 class="blog-related-posts__title">{{ post.name }}</h3>
+          </a>
+          <summary class="blog-related-posts__post-summary">{{ post.post_list_content|truncate(250, false,'') }}</summary>
+          <a href="{{ post.absolute_url }}" class="button button--simple button--read-more">Read More</a>
+        </div>
+      </article>
+  {% if count == total %}
+      </div>
+    </section>
+  {% endif %}
+{% endmacro %}
+
+{% related_blog_posts limit=2, post_formatter='related_post', no_wrapper=True %}

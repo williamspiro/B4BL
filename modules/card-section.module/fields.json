@@ -1,0 +1,152 @@
+[ {
+  "id" : "hero",
+  "name" : "hero",
+  "label" : "Image and icon",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "hero.hero_image",
+    "name" : "hero_image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "type" : "image",
+    "default" : {
+      "alt" : "A classroom lecture",
+      "height" : 205,
+      "max_height" : 205,
+      "max_width" : 300,
+      "size_type" : "auto",
+      "src" : "https://cdn2.hubspot.net/hubfs/7303166/Education/home-lecture.png",
+      "width" : 300
+    }
+  }, {
+    "id" : "hero.icon_field",
+    "name" : "icon_field",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "type" : "icon",
+    "default" : {
+      "name" : "heart",
+      "type" : "REGULAR",
+      "unicode" : "f004"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : null
+}, {
+  "id" : "content",
+  "name" : "content",
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "content.title",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Teachers That Care About Your Success"
+  }, {
+    "id" : "content.text",
+    "name" : "text",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p style=\"text-align: center;\">Vivamus sagittis lacus vel<br>augue laoreet rutrum.</p>"
+  }, {
+    "id" : "content.link_field",
+    "name" : "link_field",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "href" : "https://www.hubspot.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  }, {
+    "id" : "content.link_text",
+    "name" : "link_text",
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Learn More"
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : null
+}, {
+  "id" : "override_default_style",
+  "name" : "override_default_style",
+  "label" : "Override default style",
+  "help_text" : "Enabling this option will allow you to override default theme styles. Disabling this option will reconnect the module back to the default theme styles.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style options",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "override_default_style",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "style.accent",
+    "name" : "accent",
+    "label" : "Accent color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#00CB66",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.icon_fill",
+    "name" : "icon_fill",
+    "label" : "Icon fill color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_value_regex" : null,
+      "operator" : null,
+      "access" : null,
+      "hidden_subfields" : {
+        "opacity" : true
+      }
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "type" : "group",
+  "default" : null
+} ]

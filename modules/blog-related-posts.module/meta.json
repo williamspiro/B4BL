@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "smart_type" : "NOT_SMART",
+  "icon" : "../../images/module-icons/blog.svg",
+  "host_template_types" : [ "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 30602085934,
+  "label" : "Related blog posts",
+  "is_available_for_new_content" : true
+}

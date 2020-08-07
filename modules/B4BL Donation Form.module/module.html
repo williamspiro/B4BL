@@ -1,0 +1,41 @@
+<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    portalId: "7901972",
+    formId: "5fc19f24-0553-41bf-bc9d-39762f54e087",
+    cssClass: "donation_form",
+    onFormSubmit: function() {
+      // Serialize the form data.
+      var name = $('.donation_form').find('input[name="firstname"]').val() + " " +  $('.donation_form').find('input[name="lastname"]').val();
+      var amount = parseInt($('.donation_form').find('input[name="amount"]').val());
+      if (name.length < 2) {
+        var name = "Anonymous";
+      }        
+
+      var newDonation = {
+        "name": name,
+        "amount": amount
+      };
+      console.log(newDonation);
+      // Submit the form using AJAX.
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        url: 'https://www.bikeforblacklives.com/_hcms/api/countDonation',
+        data: JSON.stringify(newDonation)
+      })
+      var newTotalRaised = parseInt($(".raised-total").html()) + amount;
+      var goal = parseInt($(".goal").html())
+      var newPercentageRaised = Math.round(newTotalRaised / goal * 100);
+      $('.recent-d').after('<li class="mydata" style="list-style: none;">Name: <strong>' + name + '</strong>, amount: <strong>$' + amount + '</strong></li>').fadeIn();
+      $(".raised-total").html(newTotalRaised);
+      $(".progress_amounts--percent").html(newPercentageRaised + "%");
+      $(".progress-bar").css({'width': newPercentageRaised + "%" });
+
+    }
+  });
+</script>
