@@ -2,9 +2,12 @@ const axios = require('axios');
 
 exports.main = ({ accountId, body, params }, sendResponse) => {
 
+  // Format API URLs
   const API_HUBDB_BASE = 'https://api.hubspot.com/cms/v3/hubdb/tables/donations'
   const UPDATE_TABLE_API_URI = API_HUBDB_BASE + '/rows?hapikey=' + process.env.API_KEY
   const PUBLISH_TABLE_API_URI = API_HUBDB_BASE + '/draft/push-live?hapikey=' + process.env.API_KEY
+
+  // Build HubDB table row to create with data submitted to function in POST request
   let name = body.name
   let amount = body.amount
   let requestBody = {
@@ -13,6 +16,8 @@ exports.main = ({ accountId, body, params }, sendResponse) => {
       "amount": amount
     }
   }
+
+  // Create HubDB table row
   axios.post(UPDATE_TABLE_API_URI, requestBody)
     .then(function (response) {
       console.log("HubDB table updated");
@@ -56,11 +61,3 @@ exports.main = ({ accountId, body, params }, sendResponse) => {
   });
 
 };
-
-
-
-
-
-
-
-
