@@ -1,0 +1,98 @@
+/* Footer Container */
+
+.footer {
+  background-color: #FFF;
+}
+
+.footer__container {
+  margin: 0 auto;
+  max-width: 1340px;
+  padding: 40px 20px 0px;
+}
+
+/* Footer Top Section */
+
+.footer__top-section {
+  padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .footer__top-section {
+    padding-top: 40px;
+    text-align: center;
+  }
+}
+
+/* Footer Logo */
+
+.footer__logo {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .footer__logo,
+  .footer__follow-me {
+    margin-bottom: 40px;
+  }
+}
+
+/* Footer Menus */
+
+.footer h4 {
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.125rem;
+  text-transform: uppercase;
+}
+
+.footer__navigation ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer__navigation li {
+  margin: 0.75rem 0;
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6
+.footer p,
+.footer a,
+.footer div,
+.footer span {
+  color: #1D1D1D;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .footer .footer__navigation {
+    float: left;
+    width: 50%;
+  }
+
+  .footer .footer__navigation:nth-child(2n+2) {
+    clear: left;
+  }
+
+  .footer__subscription-banner .footer__container {
+    display: block;
+    padding: 20px 10px;
+  }
+}
+
+/* Footer Bottom Section */
+
+.footer__bottom-section {
+  border-top: 1px solid #1D1D1D;
+  padding: 20px 0px;
+}
+
+@media (max-width: 767px) {
+  .footer__bottom-section {
+    text-align: center;
+  }
+}

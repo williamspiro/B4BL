@@ -1,0 +1,40 @@
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 1340px;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 1380px) {
+  .content-wrapper {
+    padding: 0;
+  }
+}
+
+.content-wrapper--narrow {
+  max-width: 700px;
+}
+
+@media screen and (min-width: 740px) {
+  .content-wrapper {
+    padding: 0;
+  }
+}
+
+.dnd-section {
+  padding: 80px 20px;
+}
+
+.dnd-section > .row-fluid {
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.dnd-section .dnd-column {
+  padding: 0 20px;
+}
+
+@media (max-width: 767px) {
+  .dnd-section .dnd-column {
+    padding: 0;
+  }
+}

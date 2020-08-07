@@ -1,0 +1,93 @@
+<!--
+  templateType: blog
+  isAvailableForNewContent: true
+  label: Education - blog post
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  <div class="body-container body-container--blog-post">
+
+    {# Blog Post Banner #}
+    {% module 'blog_post_banner'
+      path='../modules/blog-post-banner'
+    %}
+    {# End Blog Post Banner #}
+
+    <div class="content-wrapper content-wrapper--narrow content-wrapper--blog-post">
+
+      {# Blog Post Social Sharing #}
+      <div class="blog-post__social">
+        <div class="social-links">
+          {% if group.show_social_link_twitter %}
+            <a href="https://twitter.com/intent/tweet?text=I+found+this+interesting+blog+post&url={{ content.absolute_url }}" target="_blank" class="social-links__link">
+              {% icon
+                extra_classes='social-links__icon',
+                name='twitter',
+                purpose='semantic',
+                style='SOLID',
+                title='Share this blog post on Twitter'
+              %}
+            </a>
+          {% endif %}
+          {% if group.show_social_link_facebook %}
+            <a href="http://www.facebook.com/share.php?u={{ content.absolute_url }}" target="_blank" class="social-links__link">
+              {% icon
+                extra_classes='social-links__icon',
+                name='facebook-f',
+                purpose='semantic',
+                style='SOLID',
+                title='Share this blog post on Facebook'
+              %}
+            </a>
+          {% endif %}
+          {% if group.show_social_link_linkedin %}
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}" target="_blank" class="social-links__link">
+              {% icon
+                extra_classes='social-links__icon',
+                name='linkedin-in',
+                purpose='semantic',
+                style='SOLID',
+                title='Share this blog post on LinkedIn'
+              %}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {# End Blog Post Social Sharing #}
+
+      {# Blog Post Content #}
+      <article class="blog-post__body">
+        {{ content.post_body }}
+      </article>
+      {# End Blog Post Content #}
+
+    </div>
+
+    {# Blog Comments #}
+    {% if group.allow_comments %}
+    <div class="blog-comments">
+      <div class="content-wrapper content-wrapper--blog-post">
+        {% module "blog_comments"
+          path="@hubspot/blog_comments",
+          label="Blog comments"
+        %}
+      </div>
+    </div>
+    {% endif %}
+    {# End Blog Comments #}
+
+    {# Related Posts #}
+    <div class="content-wrapper content-wrapper--blog-post">
+      {% module 'blog_related_posts'
+        path='../modules/blog-related-posts'
+      %}
+    </div>
+    {# End Related Posts #}
+
+  </div>
+</main>
+
+{% endblock body %}

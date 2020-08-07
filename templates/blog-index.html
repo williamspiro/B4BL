@@ -1,0 +1,160 @@
+<!--
+  templateType: blog
+  isAvailableForNewContent: true
+  label: Education - blog listing
+  screenshotPath: ../images/template-previews/blog-index.png
+-->
+{% extends './layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  <div class="body-container body-container--blog-index">
+
+    {# Blog Listing Author Avatar #}
+    {% if blog_author %}
+      <section class="blog-index-header blog-index-header--author-info">
+        <div class="content-wrapper content-wrapper--narrow content-wrapper--blog-index">
+          <div class="blog-index-header__inner">
+            {% if blog_author.avatar %}
+              <span class="blog-index-header__author-avatar">
+                <img src="{{ blog_author.avatar }}" alt="Picture of {{ blog_author.display_name }}">
+              </span>
+            {% endif %}
+            <h1 class="blog-index-header__title">{{ blog_author.display_name }}</h1>
+            <h4 class="blog-index-header__subtitle">{{ blog_author.bio }}</h4>
+          </div>
+        </div>
+      </section>
+    {% else %}
+    {# End Blog Author Listing Avatar #}
+
+      {# Blog Listing Banner #}
+      {% module 'blog_listing_banner'
+        path='../modules/blog-listing-banner'
+      %}
+      {# End Blog Listing Banner #}
+
+      {# Blog Filter Banner #}
+      <div class="blog-filter">
+        <div class="content-wrapper">
+          <div class="blog-filter__categories">
+            {% module 'blog_tag_filter'
+              path='../modules/blog-tag-filter'
+            %}
+          </div>
+          <div class="blog-filter__search">
+            {% module 'blog_search'
+              path='@hubspot/search_input',
+              label='Blog search'
+            %}
+          </div>
+        </div>
+      </div>
+      {# End Blog Filter Banner #}
+
+    {% endif %}
+
+    <div class="content-wrapper--blog-index content-wrapper content-wrapper--narrow">
+
+      {# Blog Listing #}
+      <section class="blog-index">
+        {% if tag %}
+          <div class="blog-index__tag-header">
+            <div class="blog-index__tag-subtitle">Posts about</div>
+            <h1 class="blog-index__tag-heading">{{ page_meta.html_title|split(' | ')|last }}</h1>
+          </div>
+        {% endif %}
+        {% for content in contents %}
+          <article class="blog-index__post blog-index__post--large">
+            <div class="blog-index__post-header">
+              {% if content.featured_image and group.use_featured_image_in_summary %}
+                <a href="{{ content.absolute_url }}">
+                  <div class="blog-index__post-image blog-index__post-image--large" style="background-image: url('{{ content.featured_image }}')";>
+                  </div>
+                </a>
+              {% endif %}
+            </div>
+            <div class="blog-index__info">
+              {% if content.tag_list %}
+                <div class="blog-index__topic">
+                  {% for topic in content.topic_list %}
+                    <a class="blog-index__topic-link" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>{% if not loop.last %},{% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <div class="blog-index__date">
+                {{ content.publish_date_localized }}
+              </div>
+            </div>
+            <div class="blog-index__post-content  blog-index__post-content--large">
+              <h3 class="blog-index__post-title">
+                <a href="{{ content.absolute_url }}">{{ content.name }}</a>
+              </h3>
+              <div class="blog-index__author-info">
+                {% if content.blog_author.avatar %}
+                  <span class="blog-index__author-avatar">
+                    <img src="{{ content.blog_author.avatar  }}" alt="Picture of {{ content.blog_author.avatar  }}">
+                  </span>
+                {% endif %}
+                <a class="blog-index__author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+                  <div>{{ content.blog_post_author.display_name }}</div>
+                </a>
+              </div>
+                {% if content_group.show_summary_in_listing %}
+                  {% if content.post_body is string_containing "<!--more-->" %}
+                    <summary class="blog-index__post-summary">{{ content.post_list_content }}</summary>
+                  {% else %}
+                    <summary class="blog-index__post-summary">{{ content.post_list_content|truncate(250, false,'') }}</summary>
+                  {% endif %}
+                {% endif %}
+              <a href="{{ content.absolute_url }}" class="button button--simple button--read-more">Read More</a>
+            </div>
+          </article>
+        {% endfor %}
+      </section>
+      {# End Blog Listing #}
+
+      {# Blog Pagination #}
+      {% if contents.total_page_count > 1 %}
+        <div class="blog-pagination">
+          {% set page_list = [-2, -1, 0, 1, 2] %}
+          {% if contents.total_page_count - current_page_num == 1 %}{% set offset = -1 %}
+          {% elif contents.total_page_count - current_page_num == 0 %}{% set offset = -2 %}
+          {% elif current_page_num == 2 %}{% set offset = 1 %}
+          {% elif current_page_num == 1 %}{% set offset = 2 %}
+          {% else %}{% set offset = 0 %}{% endif %}
+
+          <a class="blog-pagination__link blog-pagination__prev-link {{ 'blog-pagination__prev-link--disabled' if !last_page_num }}" href="{{ blog_page_link(last_page_num) }}">
+            {% icon
+              name='chevron-left',
+              no_wrapper=True,
+              purpose='decorative',
+              style='SOLID',
+              width='13'
+            %}
+            Prev
+          </a>
+          {% for page in page_list %}
+            {% set this_page = current_page_num + page + offset %}
+            {% if this_page > 0 and this_page <= contents.total_page_count %}
+              <a class="blog-pagination__link blog-pagination__number-link {{ 'blog-pagination__link--active' if this_page == current_page_num }}" href="{{ blog_page_link(this_page) }}">{{ this_page }}</a>
+            {% endif %}
+          {% endfor %}
+          <a class="blog-pagination__link blog-pagination__next-link {{ 'blog-pagination__next-link--disabled' if !next_page_num }}" href="{{ blog_page_link(current_page_num + 1) }}">
+            Next
+            {% icon
+              name='chevron-right',
+              no_wrapper=True,
+              purpose='decorative',
+              style='SOLID',
+              width='13'
+            %}
+          </a>
+        </div>
+      {% endif %}
+      {# End Blog Pagination #}
+
+    </div>
+  </div>
+</main>
+{% endblock body %}

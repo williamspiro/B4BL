@@ -1,0 +1,85 @@
+<!--
+  templateType: global_partial
+  label: Footer
+-->
+<footer class="footer">
+  <div class="footer__container">
+
+    {# Footer Top Section #}
+    <div class="footer__top-section">
+      <div class="row-fluid span12">
+          <div class="column span12">
+            <div class="footer__logo">
+              {% module 'footer_logo'
+                path='@hubspot/logo',
+                img={
+                  'alt': 'Education logo',
+                  'size_type': 'auto',
+                  'src': get_asset_url('../../images/logo.png'),
+                  'width': '205'
+                }
+              %}
+            </div>
+            {#
+            <div class="footer__follow-me">
+                {% module 'footer_social'
+                  path='../../modules/social-follow',
+                  social_links=[
+                    {
+                      'social_account': 'facebook-f',
+                      'accessibility': {
+                        'title': 'Follow us on Facebook'
+                      }
+                    },
+                    {
+                      'social_account': 'linkedin-in',
+                      'accessibility': {
+                        'title': 'Follow us on LinkedIn'
+                      }
+                    },
+                    {
+                      'social_account': 'twitter',
+                      'accessibility': {
+                        'title': 'Follow us on Twitter'
+                      }
+                    },
+                    {
+                      'social_account': 'instagram',
+                      'accessibility': {
+                        'title': 'Follow us on Instagram'
+                      }
+                    }
+                  ]
+                %}
+              </div> #}
+          </div>
+      </div>
+    </div>
+    {# End Footer Top Section #}
+
+    {# Footer Bottom Section #}
+    <div class="footer__bottom-section">
+      <div class="row-fluid span12">
+        <div class="column span12">
+          {% module 'footer_copyright'
+            path='@hubspot/text',
+            label='Copyright',
+            value='Copyright © {{ year }}, {{ site_settings.company_name }}'
+          %}
+        </div>
+        <div class="column span9">
+          {# {% module_block module 'footer_legal_information'
+            path="@hubspot/rich_text",
+            label="Legal information"
+          %}
+            {% module_attribute 'html' %}
+              <a href="#">Privacy Policy</a> &nbsp;| &nbsp;<a href="#">Terms of Use</a>
+            {% end_module_attribute %}
+          {% end_module_block %} #}
+        </div>
+      </div>
+    </div>
+    {# End Footer Bottom Section #}
+
+  </div>
+</footer>

@@ -1,0 +1,83 @@
+<!--
+  templateType: global_partial
+  label: Website header
+-->
+<header class="header">
+
+  {# Header Top Section #}
+  <div class="header__container header__container--upper{% if content.translated_content|length %} header__container--visible-mobile{% endif %}">
+    <div class="header__container-inner-wrapper">
+
+      {# Header Top Navigation 
+      <div class="header__top-navigation">
+        {% module 'top_header_navigation'
+          path='../../modules/menu-section',
+          label='Top navigation'
+        %}
+      </div>
+       End Header Top Navigation #}
+
+      {# Language Toggle #}
+      {% if content.translated_content|length %}
+        <div class="header__language-switcher">
+          <div class="header__language-switcher-label">
+            {% module 'language-switcher'
+              path='@hubspot/language_switcher',
+              label='Language switcher',
+              display_mode='localized',
+              extra_classes='header__language-switcher-wrapper'
+            %}
+            <div class="header__language-switcher-label-current"> {{ locale_name(locale) }}</div>
+          </div>
+        </div>
+      {% endif %}
+      {# End Language Toggle #}
+
+    </div>
+  </div>
+  {# End Header Top Section #}
+
+  {# Header Bottom Section #}
+  <div class="header__container header__container--lower">
+    <div class="header__container-inner-wrapper">
+
+      {# Logo #}
+      <div class="header__logo">
+        {% module 'header_logo'
+          path='@hubspot/logo',
+          img={
+            'alt': 'Education logo',
+            'size_type': 'auto',
+            'src': get_asset_url('../../images/logo.png'),
+            'width': '205'
+          }
+        %}
+      </div>
+      {# End Logo #}
+
+      {# Header Main Navigation and Mobile Navigation #}
+      <div class="header__menu">
+        <input type="checkbox" id="nav-toggle">
+        <label class="header__navigation-toggle" for="nav-toggle">
+          <span class="header__mobile-menu-icon"></span>
+        </label>
+        <div class="header__navigation">
+          {% module 'header_navigation_primary'
+            path='../../modules/menu-section',
+            label='Primary navigation'
+          %}
+          {% module 'top_header_navigation'
+            path='../../modules/menu-section',
+            label='Top navigation',
+            duplicate_mobile_menu=true,
+            extra_classes="header__navigation--secondary-mobile"
+          %}
+        </div>
+      </div>
+      {# End Header Main Navigation and Mobile Navigation #}
+
+    </div>
+  </div>
+  {# End Header Bottom Section #}
+
+</header>
